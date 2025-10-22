@@ -85,4 +85,6 @@ Este projeto está licenciado sob a licença **MIT** e é livre para estudo e cu
 
 ## 📬 Contato
 
+
+ ![LinkedInProfile](imagens/LinkedInProfile(1).png)
 - [LinkedIn](https://www.linkedin.com/in/kleccio)
