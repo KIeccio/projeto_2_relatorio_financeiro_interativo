@@ -13,7 +13,9 @@ Este projeto simula uma arquitetura de dados moderna com ingestão em batch e co
 projeto_2_relatorio_financeiro_interativo/
 │
 ├── dags/
-│   └── dag_build_reports.py           # DAG responsável por orquestrar a construção das camadas do lake
+│   ├── dag_ingest_bronze_to_silver.py       # DAG da camada Silver
+│   ├── dag_create_gold_tables.py            # DAG da camada Gold (com sensores)
+│   └── dag_build_reports.py                 # DAG orquestradora
 │
 ├── scripts/
 │   ├── mock_generator.py              # Gera os dados simulados e particionados por data
@@ -33,6 +35,8 @@ projeto_2_relatorio_financeiro_interativo/
 ```
 
 > ⚠️ É necessário criar a pasta `datalake/` na raiz com as subpastas `bronze/`, `silver/` e `gold/`. Os scripts já assumem essa estrutura como destino dos dados.
+
+
 
 ---
 
@@ -81,5 +85,4 @@ Este projeto está licenciado sob a licença **MIT** e é livre para estudo e cu
 
 ## 📬 Contato
 
-- [LinkedIn](https://www.linkedin.com/in/marco-caja)  
-- [Instagram](https://www.instagram.com/omarcocaja)
+- [LinkedIn](https://www.linkedin.com/in/kleccio)
