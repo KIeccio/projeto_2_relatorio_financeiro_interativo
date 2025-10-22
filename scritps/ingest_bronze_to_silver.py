@@ -12,7 +12,7 @@ DATALAKE_PATH = f'{BASE_DIR}/datalake'
 BRONZE_PATH = f'{DATALAKE_PATH}/bronze'
 SILVER_PATH = f'{DATALAKE_PATH}/silver'
 GOLD_PATH = f'{DATALAKE_PATH}/gold'
-
+DATA_PROCESSAMENTO='2025-09-19'
 
 builder = pyspark.sql.SparkSession.builder.appName("Projeto_2") \
     .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
@@ -98,31 +98,7 @@ def ingest_bronze_to_silver(
             else:
                 raise e
             
-"""
-Exemplos de uso para criacao das tabelas de: devolucao, estoque, vendas, impostos e frete.
-    
-    DATA PROCESSAMENTO='2025-09-19'
-    
-    ingest_bronze_to_silver(
-        sistema='sistema_devolucao', 
-        dominio='devolucao', 
-        nome_tabela='devolucao', 
-        prefixo='devolucao' ,
-        data_processamento=DATA_PROCESSAMENTO, 
-        coluna_date='data_devolucao',
-        coluna_id='pedido_id',
-    )
-
-    ingest_bronze_to_silver(
-        sistema='sistema_estoque', 
-        dominio='estoque', 
-        nome_tabela='estoque', 
-        prefixo='estoque' ,
-        data_processamento=DATA_PROCESSAMENTO, 
-        coluna_date='data_referencia',
-        coluna_id='produto_id',
-        append_only=True
-    )
+def run_vendas():
 
     ingest_bronze_to_silver(
         sistema='sistema_vendas', 
@@ -134,19 +110,34 @@ Exemplos de uso para criacao das tabelas de: devolucao, estoque, vendas, imposto
         coluna_id='produto_id',
         append_only=True
     )
+    print("Ingestão de vendas executada com sucesso!")
 
-
+def run_estoque():
     ingest_bronze_to_silver(
-        sistema='sistema_tributos', 
-        dominio='tributos', 
-        nome_tabela='tributos', 
-        prefixo='tributos' ,
+        sistema='sistema_estoque', 
+        dominio='estoque', 
+        nome_tabela='estoque', 
+        prefixo='estoque' ,
         data_processamento=DATA_PROCESSAMENTO, 
-        coluna_date='data_pagamento',
-        coluna_id='pedido_id',
+        coluna_date='data_referencia',
+        coluna_id='produto_id',
         append_only=True
     )
+    print("Ingestão de estoque executada com sucesso!")
 
+def run_devolucao():
+    ingest_bronze_to_silver(
+        sistema='sistema_devolucao', 
+        dominio='devolucao', 
+        nome_tabela='devolucao', 
+        prefixo='devolucao' ,
+        data_processamento=DATA_PROCESSAMENTO, 
+        coluna_date='data_devolucao',
+        coluna_id='pedido_id',
+    )
+    print("Ingestão de devoluções executada com sucesso!")
+
+def run_frete():
     ingest_bronze_to_silver(
         sistema='sistema_frete', 
         dominio='frete', 
@@ -157,4 +148,18 @@ Exemplos de uso para criacao das tabelas de: devolucao, estoque, vendas, imposto
         coluna_id='pedido_id',
         append_only=True
     )
-"""
+
+    print("Ingestão de frete executada com sucesso!")
+
+def run_tributos():
+    ingest_bronze_to_silver(
+        sistema='sistema_tributos', 
+        dominio='tributos', 
+        nome_tabela='tributos', 
+        prefixo='tributos' ,
+        data_processamento=DATA_PROCESSAMENTO, 
+        coluna_date='data_pagamento',
+        coluna_id='pedido_id',
+        append_only=True
+    )
+    print("Ingestão de tributos executada com sucesso!")
