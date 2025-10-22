@@ -5,7 +5,7 @@ Este projeto simula uma arquitetura de dados moderna com ingestão em batch e co
 
 ---
 
-![Dashboard financeiro](imagens/2.png)
+![Dashboard financeiro](imagens/3.png)
 
 ## 🗂 Estrutura do Projeto
 
